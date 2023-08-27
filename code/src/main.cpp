@@ -12,9 +12,11 @@
 #include "display/bitmaps.h"
 
 
+
 uint64_t frame_counter = 0;
 uint8_t fps_frame_counter = 0;
 double fps_update_timer = 0.;
+
 
 
 void setup() {
@@ -22,6 +24,7 @@ void setup() {
     initI2CBus();
     initDevices();
     UIregisterComponents();
+
 
     fps->setVisible(false);
     rtc_indicator_check->setVisible(false);
