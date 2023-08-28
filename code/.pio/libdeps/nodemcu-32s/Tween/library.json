@@ -1,0 +1,18 @@
+{
+    "name": "Tween",
+    "keywords": "easing, tween",
+    "description": "Tween library for Arduino with Robert Penners easing functions",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/hideakitai/Tween.git"
+    },
+    "authors": {
+        "name": "Hideaki Tai",
+        "url": "https://github.com/hideakitai",
+        "maintainer": true
+    },
+    "version": "0.3.9",
+    "license": "MIT",
+    "frameworks": "arduino",
+    "platforms": "*"
+}
