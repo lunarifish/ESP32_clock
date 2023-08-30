@@ -5,6 +5,7 @@
 
 void initBMP280();
 void initSSD1306();
+void initDHT11();
 void initI2CBus();
 void initDevices();
 

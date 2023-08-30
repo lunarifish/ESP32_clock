@@ -7,7 +7,7 @@
 
 void updateBMP280();
 void updateDHT11();
-void updateSensors(void *param);
+void updateSensors();
 
 
 #endif //CODE_SENSOR_TASKS_H

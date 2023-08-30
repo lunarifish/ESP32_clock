@@ -4,21 +4,39 @@
 
 #include <Wire.h>
 #include <Adafruit_BMP280.h>
-#include <U8g2lib.h>
 #include <Tween.h>
 #include "display/ui_framework/components_manager.hpp"
+#include "network/wifi_manager.h"
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+#include <DHT.h>
 
 
-extern TwoWire I2C_BUS_0;
-extern TwoWire I2C_BUS_1;
+typedef Adafruit_SSD1306* display;
+
+extern bool timer_mode;
+
 extern Adafruit_BMP280 bmp;
-extern U8G2_SSD1306_128X64_NONAME_F_4W_HW_SPI display_0;
-extern volatile double bmp280_temp, bmp280_pressure, bmp280_altitude, dht11_temp, dht11_humidity;
+extern Adafruit_SSD1306 display_0;
+extern Adafruit_SSD1306 display_1;
+
+extern DHT dht11;
+
+extern volatile double bmp280_temp,
+                       bmp280_pressure,
+                       bmp280_altitude,
+                       dht11_temp,
+                       dht11_humidity,
+                       heat_index;
 
 extern uint32_t timestamp_calib_offset;
 extern bool rtc_calibrated;
 
-extern ComponentsManager<U8G2_SSD1306_128X64_NONAME_F_4W_HW_SPI*> *components_manager;
+extern ComponentsManager<display> *components_manager;
 
+extern bool I2C_BUS_0_BUSY;
+extern bool I2C_BUS_1_BUSY;
+
+extern WiFiManager wifi_manager;
 
 #endif

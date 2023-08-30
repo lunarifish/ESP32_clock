@@ -2,21 +2,22 @@
 #include "devices_init.h"
 #include "config.h"
 #include <Adafruit_BMP280.h>
+#include <Adafruit_SSD1306.h>
+#include <Wire.h>
 #include <DHT.h>
 
 
 
-TwoWire I2C_BUS_0(0);
-TwoWire I2C_BUS_1(1);
-Adafruit_BMP280 bmp(&I2C_BUS_1);
-// DHT dht11(DHT11_DATA, DHT11);
-// U8G2_SSD1306_128X64_NONAME_F_4W_SW_SPI u8g2_SW(U8G2_R0, SSD1306_SCLK, SSD1306_MOSI, SSD1306_CS, SSD1306_DC, SSD1306_RST);
-U8G2_SSD1306_128X64_NONAME_F_4W_HW_SPI display_0(U8G2_R0, SSD1306_CS, SSD1306_DC, SSD1306_RST);
+Adafruit_BMP280 bmp(&Wire);
+DHT dht11(DHT11_DATA, DHT11);
+
+Adafruit_SSD1306 display_0(128, 64, &Wire1);
+Adafruit_SSD1306 display_1(128, 64, &Wire);
 
 
 void initBMP280() {
     while (!bmp.begin(BMP280_ADDRESS_ALTER)) {
-        Serial.println(F("BMP280: Could not find a valid BMP280 sensor, check_circle wiring or "
+        Serial.println(F("BMP280: Could not find a valid BMP280 sensor, ICON_CHECK_CIRCLE wiring or "
                          "try a different address!"));
         delay(1000);
     }
@@ -31,24 +32,38 @@ void initBMP280() {
 
 
 void initSSD1306() {
-    display_0.begin();
-    display_0.enableUTF8Print();
-    display_0.setFont(u8g2_font_10x20_tf);
-    display_0.setFontDirection(0);
-    display_0.clear();
+    display_0.begin(SSD1306_SWITCHCAPVCC, SSD1306_ADDRESS);
+    display_1.begin(SSD1306_SWITCHCAPVCC, SSD1306_ADDRESS);
+
+    display_0.setTextColor(SSD1306_WHITE);
+    display_1.setTextColor(SSD1306_WHITE);
+
+    display_0.display();
+    display_1.display();
+    delay(1000); // Pause for 2 seconds
+}
+
+
+void initDHT11() {
+    dht11.begin();
 }
 
 
 void initI2CBus() {
-    I2C_BUS_0.setPins(I2C_BUS_0_SDA, I2C_BUS_0_SCL);
-    I2C_BUS_0.begin();
-    I2C_BUS_1.setPins(I2C_BUS_1_SDA, I2C_BUS_1_SCL);
-    I2C_BUS_1.begin();
+    Wire.begin(I2C_BUS_0_SDA, I2C_BUS_0_SCL, I2C_BUS_0_CLOCK);
+    Wire1.begin(I2C_BUS_1_SDA, I2C_BUS_1_SCL, I2C_BUS_1_CLOCK);
+
+    Serial.print("I2C bus #0 clock= ");
+    Serial.println(Wire.getClock());
+    Serial.print("I2C bus #1 clock= ");
+    Serial.println(Wire1.getClock());
 }
 
 
 void initDevices() {
     pinMode(LED_BUILTIN, OUTPUT);
+    initI2CBus();
     initBMP280();
     initSSD1306();
+    initDHT11();
 }
