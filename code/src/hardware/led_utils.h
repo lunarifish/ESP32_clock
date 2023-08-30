@@ -1,8 +1,8 @@
 
 #pragma once
 
-#ifndef LED_UTILS
-#define LED_UTILS
+#ifndef CODE_LED_UTILS_H
+#define CODE_LED_UTILS_H
 
 #include <cstdint>
 

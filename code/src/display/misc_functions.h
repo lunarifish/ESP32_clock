@@ -10,4 +10,4 @@ void updateTempPressHumid();
 void updateTempIndicator();
 void updateComponents();
 
-#endif //CODE_MISC_FUNCTIONS_H
+#endif

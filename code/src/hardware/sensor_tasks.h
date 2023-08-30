@@ -10,4 +10,4 @@ void updateDHT11();
 void updateSensors();
 
 
-#endif //CODE_SENSOR_TASKS_H
+#endif

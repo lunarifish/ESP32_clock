@@ -6,4 +6,4 @@
 
 void setClock();
 
-#endif //CODE_NTP_H
+#endif

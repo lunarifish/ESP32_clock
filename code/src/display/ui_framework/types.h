@@ -24,4 +24,4 @@ typedef struct double_Vec2 {
     }
 } uint8_Vec2;
 
-#endif //CODE_TYPES_H
+#endif

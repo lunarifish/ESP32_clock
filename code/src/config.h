@@ -1,8 +1,8 @@
 
 #pragma once
 
-#ifndef ESP32_CLOCK_CONFIG_H
-#define ESP32_CLOCK_CONFIG_H
+#ifndef CODE_CONFIG_H
+#define CODE_CONFIG_H
 
 #include <cstdint>
 

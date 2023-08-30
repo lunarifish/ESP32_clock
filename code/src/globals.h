@@ -1,6 +1,8 @@
+
 #pragma once
-#ifndef GLOBALS_H
-#define GLOBALS_H
+
+#ifndef CODE_GLOBALS_H
+#define CODE_GLOBALS_H
 
 #include <Wire.h>
 

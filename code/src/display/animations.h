@@ -15,4 +15,4 @@ namespace Animations {
 }
 
 
-#endif //CODE_ANIMATIONS_H
+#endif

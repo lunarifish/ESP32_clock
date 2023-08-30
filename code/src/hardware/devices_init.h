@@ -1,6 +1,8 @@
+
 #pragma once
-#ifndef DEVICES_INIT_H
-#define DEVICES_INIT_H
+
+#ifndef CODE_DEVICES_INIT_H
+#define CODE_DEVICES_INIT_H
 
 
 void initBMP280();

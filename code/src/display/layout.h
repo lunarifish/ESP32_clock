@@ -29,4 +29,4 @@ namespace UIComponents {
 void UIregisterComponents();
 void UIsetup();
 
-#endif //CODE_LAYOUT_H
+#endif

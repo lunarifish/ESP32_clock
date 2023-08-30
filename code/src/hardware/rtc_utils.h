@@ -1,7 +1,8 @@
+
 #pragma once
 
-#ifndef RTC_H
-#define RTC_H
+#ifndef CODE_RTC_UTILS_H
+#define CODE_RTC_UTILS_H
 
 #include <Arduino.h>
 #include <rtc.h>
