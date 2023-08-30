@@ -1,5 +1,6 @@
 
 #include <Arduino.h>
+#include <DHTesp.h>
 #include "sensor_tasks.h"
 #include "globals.h"
 
@@ -10,6 +11,9 @@ volatile double bmp280_temp(0.),
                 dht11_temp(0.),
                 dht11_humidity(0.),
                 heat_index(0.);
+
+ComfortState dht11_comfort_state;
+TempAndHumidity dht11_temp_humidity;
 
 
 void updateBMP280() {
@@ -26,17 +30,21 @@ void updateBMP280() {
     I2C_BUS_0_BUSY = false;
 }
 
-void updateDHT11() {
-    // TODO: sometimes this function will cause the system to crash
-    //      maybe change a DHT11 library will solve this
 
-    double t, h;
-    h = dht11.readHumidity();
-    t = dht11.readTemperature();
-    if (!isnan(h) && !isnan(t)) {
-        dht11_temp = t;
-        dht11_humidity = h;
+void updateDHT11() {
+    dht11_temp_humidity = dht11.getTempAndHumidity();
+
+    if (dht11.getStatus() != 0) {
+        Serial.println("dht11: error status: " + String(dht11.getStatusString()));
+        return;
     }
+    dht11_temp = dht11_temp_humidity.temperature;
+    dht11_humidity = dht11_temp_humidity.humidity;
+    heat_index = dht11.computeHeatIndex((float)bmp280_temp,
+                                        dht11_temp_humidity.humidity);
+    dht11.getComfortRatio(dht11_comfort_state,
+                          (float)bmp280_temp,
+                          dht11_temp_humidity.humidity);
 }
 
 void updateSensors() {

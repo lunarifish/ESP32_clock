@@ -7,6 +7,7 @@
 void updateFPS();
 void updateDateTime();
 void updateTempPressHumid();
-void updateStrings();
+void updateTempIndicator();
+void updateComponents();
 
 #endif //CODE_MISC_FUNCTIONS_H

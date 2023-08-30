@@ -4,15 +4,16 @@
 #include <Adafruit_BMP280.h>
 #include <Adafruit_SSD1306.h>
 #include <Wire.h>
-#include <DHT.h>
+#include <DHTesp.h>
 
 
 
 Adafruit_BMP280 bmp(&Wire);
-DHT dht11(DHT11_DATA, DHT11);
 
 Adafruit_SSD1306 display_0(128, 64, &Wire1);
 Adafruit_SSD1306 display_1(128, 64, &Wire);
+
+DHTesp dht11;
 
 
 void initBMP280() {
@@ -45,7 +46,7 @@ void initSSD1306() {
 
 
 void initDHT11() {
-    dht11.begin();
+    dht11.setup(DHT11_DATA, DHTesp::DHT11);
 }
 
 

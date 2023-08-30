@@ -41,7 +41,7 @@ void loop() {
     display_0.clearDisplay();
     display_1.clearDisplay();
 
-    updateStrings();
+    updateComponents();
 
     components_manager->updateFrame();
 

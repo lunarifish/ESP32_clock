@@ -9,18 +9,21 @@
 #include "globals.h"
 
 
-extern TextBox<display> *main_date;
-extern TextBox<display> *main_time;
-extern TextBox<display> *temp;
-extern TextBox<display> *press;
-extern TextBox<display> *humidity;
-extern TextBox<display> *fps;
+namespace UIComponents {
+    extern TextBox<display> *main_date;
+    extern TextBox<display> *main_time;
+    extern TextBox<display> *temp;
+    extern TextBox<display> *press;
+    extern TextBox<display> *humidity;
+    extern TextBox<display> *fps;
 
-extern Bitmap<display>  *rtc_indicator_false;
-extern Bitmap<display>  *rtc_indicator_check;
-extern Bitmap<display>  *wifi_indicator;
-extern Bitmap<display>  *server_indicator;
-extern Bitmap<display>  *thermometer;
+    extern Bitmap<display>  *rtc_indicator_false;
+    extern Bitmap<display>  *rtc_indicator_check;
+    extern Bitmap<display>  *wifi_indicator;
+    extern Bitmap<display>  *server_indicator;
+    extern Bitmap<display>  *thermometer;
+    extern Bitmap<display>  *humidity_indicator;
+}
 
 
 void UIregisterComponents();

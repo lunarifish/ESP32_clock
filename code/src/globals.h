@@ -9,7 +9,7 @@
 #include "network/wifi_manager.h"
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
-#include <DHT.h>
+#include <DHTesp.h>
 
 
 typedef Adafruit_SSD1306* display;
@@ -20,7 +20,7 @@ extern Adafruit_BMP280 bmp;
 extern Adafruit_SSD1306 display_0;
 extern Adafruit_SSD1306 display_1;
 
-extern DHT dht11;
+extern DHTesp dht11;
 
 extern volatile double bmp280_temp,
                        bmp280_pressure,
@@ -28,6 +28,7 @@ extern volatile double bmp280_temp,
                        dht11_temp,
                        dht11_humidity,
                        heat_index;
+extern ComfortState dht11_comfort_state;
 
 extern uint32_t timestamp_calib_offset;
 extern bool rtc_calibrated;

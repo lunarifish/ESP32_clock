@@ -17,29 +17,30 @@ const char *NTP3 = "ntp3.aliyun.com";
 void setClock() {
     if (rtc_calibrated) return;
 
-    uint8_t retrys = 1;
-    while (!WiFi.isConnected()) {
-        if (retrys == RTC_CALIB_MAX_RETRYS) return;
-        sleep(RTC_CALIB_RETRY_INTERVAL);
-        ++retrys;
-    }
-
     Animations::serverConnected();
-    Serial.println("rtc: calibrating");
-    configTime(0, 0, NTP1, NTP2, NTP3);
+
     struct tm timeInfo;
-    if (!getLocalTime(&timeInfo)) {
-        Serial.println("rtc: Failed to obtain time");
-        Animations::serverDisconnected();
-        return;
+    for (uint8_t i = 0; i < RTC_CALIB_MAX_RETRYS; ++i) {
+        if (!WiFi.isConnected()) continue;
+
+        Serial.println("rtc: calibrating");
+        configTime(0, 0, NTP1, NTP2, NTP3);
+
+        // if failed
+        if (!getLocalTime(&timeInfo)) {
+            Serial.println("rtc: Failed to obtain time");
+            sleep(RTC_CALIB_RETRY_INTERVAL);
+            continue;
+        }
+
+        // success
+        timestamp_calib_offset = mktime(&timeInfo) + 3600 * 8;
+        rtc_calibrated = true;
+        timer_mode = false;
+        Serial.println("rtc: calibrated");
+
+        Animations::rtcCalibrate();
+        break;
     }
-    timestamp_calib_offset = mktime(&timeInfo) + 3600 * 8;
     Animations::serverDisconnected();
-    Animations::rtcCalibrate();
-
-    rtc_calibrated = true;
-    timer_mode = false;
-    Serial.println("rtc: calibrated");
 }
-
-

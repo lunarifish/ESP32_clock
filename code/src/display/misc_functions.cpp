@@ -2,8 +2,11 @@
 #include <Arduino.h>
 #include <rtc.h>
 
+#include <DHTesp.h>
+
 #include "misc_functions.h"
 #include "..\hardware\rtc_utils.h"
+#include "bitmaps.h"
 #include "layout.h"
 
 
@@ -15,7 +18,7 @@ void updateFPS() {
     ++fps_frame_counter;
     if (millis() - fps_update_timer > 1000) {
         fps_update_timer = millis();
-        fps->setText("fps:" + String(fps_frame_counter));
+        UIComponents::fps->setText("fps:" + String(fps_frame_counter));
         fps_frame_counter = 0;
     }
 }
@@ -23,27 +26,59 @@ void updateFPS() {
 
 void updateDateTime() {
     if ((esp_rtc_get_time_us() / 100000 % 10) < 5)
-        main_time->setText(strftime_us(esp_rtc_get_time_us(), "%H:%M:%S"));
+        UIComponents::main_time->setText(strftime_us(esp_rtc_get_time_us(), "%H:%M:%S"));
     else
-        main_time->setText(strftime_us(esp_rtc_get_time_us(), "%H:%M %S"));
+        UIComponents::main_time->setText(strftime_us(esp_rtc_get_time_us(), "%H:%M %S"));
 
     if (timer_mode)
-        main_date->setText("Timer Mode");
+        UIComponents::main_date->setText("Timer Mode");
     else
-        main_date->setText(strftime_us(esp_rtc_get_time_us(), "%Y-%m-%d"));
+        UIComponents::main_date->setText(strftime_us(esp_rtc_get_time_us(), "%Y-%m-%d"));
 }
 
 
 void updateTempPressHumid() {
-    temp->setText(String(bmp280_temp, 1) + "/" + String(heat_index, 1) + ".C");
-    press->setText(String((uint8_t)dht11_humidity) + "%RH");
+    UIComponents::temp->setText(String(bmp280_temp, 1) + "/" + String(heat_index, 1) + ".C");
+    UIComponents::press->setText(String((uint8_t)dht11_humidity) + "%RH");
     // press->setText(String(bmp280_pressure / 100) + "hPa");
 }
 
 
-void updateStrings() {
+void updateTempIndicator() {
+    switch (dht11_comfort_state) {
+        case Comfort_OK:
+            UIComponents::thermometer->setBitmap(const_cast<uint8_t *>(Bitmaps::ICON_THERMOMETER_HALF), 16, 16);
+            break;
+        case Comfort_TooHot:
+            UIComponents::thermometer->setBitmap(const_cast<uint8_t *>(Bitmaps::ICON_THERMOMETER_SUN), 16, 16);
+            break;
+        case Comfort_TooCold:
+            UIComponents::thermometer->setBitmap(const_cast<uint8_t *>(Bitmaps::ICON_THERMOMETER_SNOW), 16, 16);
+            break;
+        case Comfort_TooDry:
+            break;
+        case Comfort_TooHumid:
+            break;
+        case Comfort_HotAndHumid:
+            UIComponents::thermometer->setBitmap(const_cast<uint8_t *>(Bitmaps::ICON_THERMOMETER_HIGH), 16, 16);
+            break;
+        case Comfort_HotAndDry:
+            UIComponents::thermometer->setBitmap(const_cast<uint8_t *>(Bitmaps::ICON_THERMOMETER_HIGH), 16, 16);
+            break;
+        case Comfort_ColdAndHumid:
+            UIComponents::thermometer->setBitmap(const_cast<uint8_t *>(Bitmaps::ICON_THERMOMETER_LOW), 16, 16);
+            break;
+        case Comfort_ColdAndDry:
+            UIComponents::thermometer->setBitmap(const_cast<uint8_t *>(Bitmaps::ICON_THERMOMETER_LOW), 16, 16);
+            break;
+    }
+}
+
+
+void updateComponents() {
     updateFPS();
     updateDateTime();
     updateTempPressHumid();
+    updateTempIndicator();
 }
 
