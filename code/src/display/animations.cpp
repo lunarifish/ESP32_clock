@@ -1,9 +1,10 @@
 
+#include "animations.h"
+
 #include <TaskManagerIO.h>
 
-#include "animations.h"
 #include "bitmaps.h"
-
+#include "layout.h"
 
 namespace Animations {
     void startup() {

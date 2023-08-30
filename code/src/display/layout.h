@@ -4,7 +4,7 @@
 #ifndef CODE_LAYOUT_H
 #define CODE_LAYOUT_H
 
-#include "ui_framework/components_manager.hpp"
+
 #include "ui_framework/components.hpp"
 #include "globals.h"
 

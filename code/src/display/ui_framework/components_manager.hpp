@@ -4,8 +4,9 @@
 #ifndef CODE_COMPONENTS_MANAGER_HPP
 #define CODE_COMPONENTS_MANAGER_HPP
 
-#include "components.hpp"
 #include <vector>
+
+#include "components.hpp"
 
 
 template <typename T>

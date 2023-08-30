@@ -4,7 +4,6 @@
 #ifndef CODE_ANIMATIONS_H
 #define CODE_ANIMATIONS_H
 
-#include "layout.h"
 
 namespace Animations {
     void startup();

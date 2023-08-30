@@ -1,12 +1,13 @@
 
 #include "devices_init.h"
-#include "config.h"
+
+#include <Wire.h>
+
 #include <Adafruit_BMP280.h>
 #include <Adafruit_SSD1306.h>
-#include <Wire.h>
 #include <DHTesp.h>
 
-
+#include "config.h"
 
 Adafruit_BMP280 bmp(&Wire);
 

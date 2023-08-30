@@ -1,8 +1,10 @@
 
+#include "wifi_manager.h"
+
 #include <WiFi.h>
 
-#include "wifi_manager.h"
 #include "..\display\animations.h"
+
 
 
 /***

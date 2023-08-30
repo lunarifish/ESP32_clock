@@ -1,12 +1,12 @@
 
 #include "layout.h"
 
-#include "bitmaps.h"
 #include <Fonts/FreeMonoBoldOblique12pt7b.h>
 #include <Fonts/FreeSans9pt7b.h>
-
 #include <Fonts/FreeSansBold12pt7b.h>
 
+#include "ui_framework/components_manager.hpp"
+#include "bitmaps.h"
 
 
 ComponentsManager<display> *components_manager = new ComponentsManager<display>();
@@ -17,7 +17,7 @@ namespace UIComponents {
     TextBox<display> *temp                = new TextBox<display>("", 27, 0, 1, &FreeSans9pt7b, &display_1);
     TextBox<display> *press               = new TextBox<display>("", 27, 0, 1, &FreeSans9pt7b, &display_1);
 
-    TextBox<display> *fps                 = new TextBox<display>("", 0, 20, 1, &FreeSans9pt7b, &display_1);
+    TextBox<display> *fps                 = new TextBox<display>("", 64, 16, 1, &FreeSans9pt7b, &display_1);
 
     Bitmap<display>  *rtc_indicator_false = new Bitmap<display> (const_cast<uint8_t *>(Bitmaps::ICON_CALENDAR_X), 5, 0, 16, 16, &display_0);
     Bitmap<display>  *rtc_indicator_check = new Bitmap<display> (const_cast<uint8_t *>(Bitmaps::ICON_CHECK_CIRCLE), 5, 0, 16, 16, &display_0);
@@ -44,6 +44,6 @@ void UIregisterComponents() {
 }
 
 void UIsetup() {
-    UIComponents::fps->setVisible(false);
+    UIComponents::fps->setVisible(true);
     UIComponents::rtc_indicator_check->setVisible(false);
 }

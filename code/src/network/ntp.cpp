@@ -6,6 +6,7 @@
 #include <WiFi.h>
 
 #include "..\config.h"
+#include "..\globals.h"
 #include "..\display\animations.h"
 
 

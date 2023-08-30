@@ -5,6 +5,7 @@
 #define CODE_WIFI_MANAGER_H
 
 #include <vector>
+
 #include <TaskManagerIO.h>
 
 struct WiFi_information {

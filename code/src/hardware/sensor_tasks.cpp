@@ -1,7 +1,10 @@
 
-#include <Arduino.h>
-#include <DHTesp.h>
 #include "sensor_tasks.h"
+
+#include <Arduino.h>
+
+#include <DHTesp.h>
+
 #include "globals.h"
 
 

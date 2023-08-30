@@ -2,10 +2,8 @@
 #include <Arduino.h>
 #include <rtc.h>
 
-#include <DHTesp.h>
-
-#include "misc_functions.h"
 #include "..\hardware\rtc_utils.h"
+#include "misc_functions.h"
 #include "bitmaps.h"
 #include "layout.h"
 

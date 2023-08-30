@@ -3,13 +3,15 @@
 #define GLOBALS_H
 
 #include <Wire.h>
+
 #include <Adafruit_BMP280.h>
 #include <Tween.h>
-#include "display/ui_framework/components_manager.hpp"
-#include "network/wifi_manager.h"
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <DHTesp.h>
+
+#include "display/ui_framework/components_manager.hpp"
+#include "network/wifi_manager.h"
 
 
 typedef Adafruit_SSD1306* display;

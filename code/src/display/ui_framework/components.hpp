@@ -7,11 +7,12 @@
 
 #include <cstdint>
 #include <cmath>
-#include "Tween.h"
-#include "types.h"
 
+#include <Tween.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+
+#include "types.h"
 
 
 template <typename Display>

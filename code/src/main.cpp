@@ -1,5 +1,6 @@
 
 #include <Arduino.h>
+
 #include <TaskManagerIO.h>
 
 #include "config.h"
@@ -10,6 +11,7 @@
 #include "display/animations.h"
 #include "display/misc_functions.h"
 #include "multitasking/async_tasks.h"
+
 
 bool I2C_BUS_0_BUSY;
 bool I2C_BUS_1_BUSY;

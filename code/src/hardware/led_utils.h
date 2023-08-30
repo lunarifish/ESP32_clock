@@ -1,3 +1,6 @@
+
+#pragma once
+
 #ifndef LED_UTILS
 #define LED_UTILS
 
