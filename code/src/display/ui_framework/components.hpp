@@ -32,7 +32,7 @@ protected:
 
     Tween::Timeline animator;
     double_Vec2 pos;
-    volatile bool visible;
+    bool visible;
     Display display;
 };
 
@@ -46,7 +46,7 @@ public:
     void setFont(uint8_t &font);
     void setFontSize(uint8_t font_size);
     uint8_t getFontSize();
-    void draw() override;
+    void draw();
 private:
     String text;
     const GFXfont *font;
@@ -60,7 +60,7 @@ class Bitmap: public Component<Display> {
 public:
     Bitmap(uint8_t *bitmap, int8_t pos_x, int8_t pos_y, uint8_t width, uint8_t height, Display display);
     void setBitmap(uint8_t *bitmap, uint8_t width, uint8_t height);
-    void draw() override;
+    void draw();
 private:
     uint8_t *bitmap;
     uint8_t width, height;
