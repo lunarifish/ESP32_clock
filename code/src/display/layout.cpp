@@ -19,12 +19,12 @@ namespace UIComponents {
 
     TextBox<display> *fps                 = new TextBox<display>("", 64, 16, 1, &FreeSans9pt7b, &display_1);
 
-    Bitmap<display>  *rtc_indicator_false = new Bitmap<display> (const_cast<uint8_t *>(Bitmaps::ICON_CALENDAR_X), 5, 0, 16, 16, &display_0);
-    Bitmap<display>  *rtc_indicator_check = new Bitmap<display> (const_cast<uint8_t *>(Bitmaps::ICON_CHECK_CIRCLE), 5, 0, 16, 16, &display_0);
-    Bitmap<display>  *wifi_indicator      = new Bitmap<display> (const_cast<uint8_t *>(Bitmaps::ICON_WIFI_OFF), 0, 0, 16, 16, &display_1);
-    Bitmap<display>  *server_indicator    = new Bitmap<display> (const_cast<uint8_t *>(Bitmaps::ICON_SERVER), 18, -20, 16, 16, &display_1);
-    Bitmap<display>  *thermometer         = new Bitmap<display> (const_cast<uint8_t *>(Bitmaps::ICON_THERMOMETER_HALF), 5, 0, 16, 16, &display_1);
-    Bitmap<display>  *humidity_indicator  = new Bitmap<display> (const_cast<uint8_t *>(Bitmaps::ICON_HUMIDITY), 4, 0, 16, 16, &display_1);
+    Bitmap<display>  *rtc_indicator_false = new Bitmap<display> (Bitmaps::ICON_CALENDAR_X, 5, 0, 16, 16, &display_0);
+    Bitmap<display>  *rtc_indicator_check = new Bitmap<display> (Bitmaps::ICON_CHECK_CIRCLE, 5, 0, 16, 16, &display_0);
+    Bitmap<display>  *wifi_indicator      = new Bitmap<display> (Bitmaps::ICON_WIFI_OFF, 0, 0, 16, 16, &display_1);
+    Bitmap<display>  *server_indicator    = new Bitmap<display> (Bitmaps::ICON_SERVER, 18, -20, 16, 16, &display_1);
+    Bitmap<display>  *thermometer         = new Bitmap<display> (Bitmaps::ICON_THERMOMETER_HALF, 5, 0, 16, 16, &display_1);
+    Bitmap<display>  *humidity_indicator  = new Bitmap<display> (Bitmaps::ICON_HUMIDITY, 4, 0, 16, 16, &display_1);
 
 }
 
@@ -44,6 +44,6 @@ void UIregisterComponents() {
 }
 
 void UIsetup() {
-    UIComponents::fps->setVisible(true);
+    UIComponents::fps->setVisible(false);
     UIComponents::rtc_indicator_check->setVisible(false);
 }

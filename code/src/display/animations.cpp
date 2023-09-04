@@ -21,7 +21,7 @@ namespace Animations {
         UIComponents::rtc_indicator_false->moveTo(5, 70, 1800);
         UIComponents::rtc_indicator_check->moveTo(5, 25, 1000);
         taskManager.schedule(onceSeconds(2), []{
-            UIComponents::rtc_indicator_check->setBitmap(const_cast<uint8_t *>(Bitmaps::ICON_CALENDAR), 16, 16);
+            UIComponents::rtc_indicator_check->setBitmap(Bitmaps::ICON_CALENDAR, 16, 16);
         });
     }
     void wifiConnected() {
@@ -33,7 +33,7 @@ namespace Animations {
     }
     void wifiDisconnected() {
         UIComponents::wifi_indicator->moveTo(0, -20, 1000);
-        UIComponents::wifi_indicator->setBitmap(const_cast<uint8_t *>(Bitmaps::ICON_WIFI_OFF), 16, 16);
+        UIComponents::wifi_indicator->setBitmap(Bitmaps::ICON_WIFI_OFF, 16, 16);
         taskManager.schedule(onceMillis(700), []{
             UIComponents::wifi_indicator->moveTo(0, 0, 1000);
         });

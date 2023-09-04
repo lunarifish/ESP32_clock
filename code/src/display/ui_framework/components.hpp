@@ -58,11 +58,11 @@ private:
 template <typename Display>
 class Bitmap: public Component<Display> {
 public:
-    Bitmap(uint8_t *bitmap, int8_t pos_x, int8_t pos_y, uint8_t width, uint8_t height, Display display);
-    void setBitmap(uint8_t *bitmap, uint8_t width, uint8_t height);
+    Bitmap(const uint8_t *bitmap, int8_t pos_x, int8_t pos_y, uint8_t width, uint8_t height, Display display);
+    void setBitmap(const uint8_t *bitmap, uint8_t width, uint8_t height);
     void draw();
 private:
-    uint8_t *bitmap;
+    const uint8_t *bitmap;
     uint8_t width, height;
 };
 
@@ -174,7 +174,7 @@ void TextBox<Display>::draw() {
 
 
 template<typename Display>
-Bitmap<Display>::Bitmap(uint8_t *bitmap, int8_t pos_x, int8_t pos_y, uint8_t width, uint8_t height, Display display):
+Bitmap<Display>::Bitmap(const uint8_t *bitmap, int8_t pos_x, int8_t pos_y, uint8_t width, uint8_t height, Display display):
         Component<Display>(pos_x, pos_y, display)
 {
     this->width = width;
@@ -183,7 +183,7 @@ Bitmap<Display>::Bitmap(uint8_t *bitmap, int8_t pos_x, int8_t pos_y, uint8_t wid
 }
 
 template<typename Display>
-    void Bitmap<Display>::setBitmap(uint8_t *bitmap, uint8_t width, uint8_t height) {
+    void Bitmap<Display>::setBitmap(const uint8_t *bitmap, uint8_t width, uint8_t height) {
         this->bitmap = bitmap;
         this->width = width;
         this->height = height;
